@@ -5,7 +5,6 @@ import { Bike } from 'src/app/models/bike';
 import { Station } from 'src/app/models/station';
 import { ServiceService } from 'src/app/Services/Service.Service';
 
-declare var M: any;
 
 @Component({
   selector: 'app-bikes',
@@ -42,7 +41,7 @@ export class BikesPage implements OnInit {
       .subscribe(res =>{
         this.getStation();
         this.getUnassignedBikes();
-        M.toast({html: 'Added Successfully'});
+        //M.toast({html: 'Added Successfully'});
       });
   }
 
@@ -52,7 +51,7 @@ export class BikesPage implements OnInit {
       .subscribe(res =>{
         this.getStation();
         this.getUnassignedBikes();
-        M.toast({html: 'Deleted Successfully'});
+       // M.toast({html: 'Deleted Successfully'});
       });
   }
 
