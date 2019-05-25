@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>bikes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="row">
+      <div class="col s7">
+        <h3>Station: {{this.serviceService.selectedStation.name}}</h3>
+        <table>
+          <thead>
+            <th>Bike</th>
+            <th>Kms</th>
+            <th>Description</th>
+            <th>Delete</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bike of serviceService.stationBike">
+              <td>{{bike.name}}</td>
+              <td>{{bike.kms}}</td>
+              <td>{{bike.description}}</td>
+              <td>
+                <a (click)="deleteBike(bike)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+      <div class="row">
+        <div class="col s7">
+          <h3>Unassigned Bikes</h3>
+          <table>
+            <thead>
+              <th>Bike</th>
+              <th>Kms</th>
+              <th>Description</th>
+              <th>Add</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bike of serviceService.unassignedBike">
+                <td>{{bike.name}}</td>
+                <td>{{bike.kms}}</td>
+                <td>{{bike.description}}</td>
+                <td>
+                  <a (click)="addBike(bike)">
+                    <i class="material-icons">add_circle_outline</i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</ion-content>
