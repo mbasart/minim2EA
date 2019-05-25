@@ -9,26 +9,29 @@
     <div class="row">
       <div class="col s7">
         <h3>Station: {{this.serviceService.selectedStation.name}}</h3>
-        <table>
-          <thead>
-            <th>Bike</th>
-            <th>Kms</th>
-            <th>Description</th>
-            <th>Delete</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let bike of serviceService.stationBike">
-              <td>{{bike.name}}</td>
-              <td>{{bike.kms}}</td>
-              <td>{{bike.description}}</td>
-              <td>
-                <a (click)="deleteBike(bike)">
-                  <i class="material-icons">delete</i>
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        
+          <ion-list-header>
+            <ion-label>Bike</ion-label>
+            <ion-label>Kms</ion-label>
+            <ion-label>Description</ion-label>
+            <ion-label>Delete</ion-label>
+          </ion-list-header>
+          
+            <ion-list *ngFor="let bike of serviceService.stationBike">
+              <ion-item>
+                <ion-label>{{bike.name}}</ion-label>
+                <ion-label>{{bike.kms}}</ion-label>
+                <ion-label>{{bike.description}}</ion-label>
+                <ion-label>
+                  <ion-button class="list-buttons1" color="danger" (click)="deleteBike(bike)" >
+                    <ion-label style="padding-left:7px">Desasignar de la Estacion</ion-label>
+                    <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
+                  </ion-button>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          
+        
       </div>
     </div>
   </div>
@@ -41,26 +44,29 @@
       <div class="row">
         <div class="col s7">
           <h3>Unassigned Bikes</h3>
-          <table>
-            <thead>
-              <th>Bike</th>
-              <th>Kms</th>
-              <th>Description</th>
-              <th>Add</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let bike of serviceService.unassignedBike">
-                <td>{{bike.name}}</td>
-                <td>{{bike.kms}}</td>
-                <td>{{bike.description}}</td>
-                <td>
-                  <a (click)="addBike(bike)">
-                    <i class="material-icons">add_circle_outline</i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          
+            <ion-list-header>
+              <ion-label>Bike</ion-label>
+              <ion-label>Kms</ion-label>
+              <ion-label>Description</ion-label>
+              <ion-label>Add</ion-label>
+            </ion-list-header>
+            
+              <ion-list *ngFor="let bike of serviceService.unassignedBike">
+                <ion-item>
+                  <ion-label>{{bike.name}}</ion-label>
+                  <ion-label>{{bike.kms}}</ion-label>
+                  <ion-label>{{bike.description}}</ion-label>
+                  <ion-label>
+                    <ion-button class="list-buttons2"  color="success"(click)="addBike(bike)" >
+                      <ion-label style="padding-left:7px" >Asignar a la Estacion</ion-label>
+                      <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+                    </ion-button>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            
+          
         </div>
       </div>
     </div>
