@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import { Station } from 'src/app/models/station';
 import { ServiceService } from 'src/app/Services/Service.Service';
 import { NgForm } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { NgForm } from '@angular/forms';
 })
 export class HomePage {
 
-  constructor(private serviceService: ServiceService, private router: Router) {}
+  constructor(private serviceService: ServiceService, private router: Router,public toastController: ToastController) {}
 
   ngOnInit() {
     localStorage.removeItem('stationId');
@@ -46,6 +47,14 @@ export class HomePage {
     })
   }
 
+  async presentToastNot() {
+    const toast = await this.toastController.create({
+      message: 'This station does not exist, sorry :(',
+      duration: 3000
+    });
+    toast.present();
+  }
+
   findName(form?: NgForm){
     if(form){
       for(let i=0; i<this.serviceService.station.length; i++){
@@ -56,7 +65,13 @@ export class HomePage {
       }
       //var textC = this.serviceService.station[0].name.search(form.value.name);
       console.log(stationFind);
-      return stationFind;
+      if(stationFind != null){
+        this.serviceService.station = [];
+      this.serviceService.station[0] = stationFind;
+      }else {
+        this.getStations();
+        this.presentToastNot();
+      }
     }
   }
 }
