@@ -10,6 +10,19 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100 p-l-20 p-r-20 p-t-20 p-b-20">
+
+        <form #stationsForm="ngForm">
+          <div>
+            <ion-item>
+              <ion-input type="text" name="name" #name="ngModel" [ngModel]="serviceService.station?.name" (ngModelChange)="serviceService.station.name = $event" placeholder="Enter a station name"></ion-input>
+              <ion-button class="list-buttons" color="primary" (click)="findName(stationsForm)">
+                <ion-label style="padding-left:7px">search</ion-label>
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </div>
+        </form>
+        <br>
         
           <ion-list-header>
             <ion-label>Station

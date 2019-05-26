@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import { Station } from 'src/app/models/station';
 import { ServiceService } from 'src/app/Services/Service.Service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { ServiceService } from 'src/app/Services/Service.Service';
 })
 export class HomePage {
 
-  constructor(private serviceService: ServiceService, private router: Router) { }
+  constructor(private serviceService: ServiceService, private router: Router) {}
 
   ngOnInit() {
     localStorage.removeItem('stationId');
@@ -43,5 +44,19 @@ export class HomePage {
       var textB = b.bikes.length;
       return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
     })
+  }
+
+  findName(form?: NgForm){
+    if(form){
+      for(let i=0; i<this.serviceService.station.length; i++){
+        let pos = this.serviceService.station[i].name.search(form.value.name);
+        if(pos != -1){
+          var stationFind = this.serviceService.station[i];
+        }
+      }
+      //var textC = this.serviceService.station[0].name.search(form.value.name);
+      console.log(stationFind);
+      return stationFind;
+    }
   }
 }
