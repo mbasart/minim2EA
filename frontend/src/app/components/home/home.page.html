@@ -12,9 +12,18 @@
       <div class="wrap-login100 p-l-20 p-r-20 p-t-20 p-b-20">
         
           <ion-list-header>
-            <ion-label>Station</ion-label>
+            <ion-label>Station
+              <ion-button class="list-buttons" color="primary" (click)="sortAlphabet()" >
+                <ion-label style="padding-left:7px">sort</ion-label>
+              </ion-button>
+            </ion-label>
             <ion-label>State</ion-label>
             <ion-label>Description</ion-label>
+            <ion-label>Bikes
+              <ion-button class="list-buttons" color="primary" (click)="sortBikes()" >
+                <ion-label style="padding-left:7px">sort</ion-label>
+              </ion-button>
+            </ion-label>
             <ion-label>View</ion-label>
             <ion-label></ion-label>
           </ion-list-header>
@@ -24,6 +33,7 @@
               <ion-label>{{station.name}}</ion-label>
               <ion-label>{{station.state}}</ion-label>
               <ion-label>{{station.description}}</ion-label>
+              <ion-label>{{station.bikes.length}}</ion-label>
               <ion-label>
                 <ion-button class="list-buttons" color="primary" (click)="viewStation(station)" >
                   <ion-label style="padding-left:7px">pageview</ion-label>

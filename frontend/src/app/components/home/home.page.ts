@@ -10,6 +10,7 @@ import { ServiceService } from 'src/app/Services/Service.Service';
   providers: [ServiceService]
 })
 export class HomePage {
+
   constructor(private serviceService: ServiceService, private router: Router) { }
 
   ngOnInit() {
@@ -26,5 +27,21 @@ export class HomePage {
 
   viewStation(station) {
     this.router.navigate(["/bikes"], {queryParams: {"station": station}} );
+  }
+
+  sortAlphabet(){
+    this.serviceService.station.sort(function(a,b){
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    })
+  }
+
+  sortBikes(){
+    this.serviceService.station.sort(function(a,b){
+      var textA = a.bikes.length;
+      var textB = b.bikes.length;
+      return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+    })
   }
 }
